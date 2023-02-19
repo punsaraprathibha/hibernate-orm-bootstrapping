@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <!--Defining for Hibernate that what's the connection driver class we're using in out project-->
+    <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+    <!--Defining for Hibernate that what's the dialect we're using in out project-->
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <!--Defining for Hibernate that what's the connection URL we're using in out project-->
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/YOUR_DB_NAME</property>
+    <!--Defining for Hibernate that what's the username for our database-->
+    <property name="hibernate.connection.username">YOUR_DB_USERNAME</property>
+    <!--Defining for Hibernate that what's the password for our database-->
+    <property name="hibernate.connection.password">YOUR_DB_PASSWORD</property>
+    <!--Defining for Hibernate that whether we need to view the SQL(s) which execute
+    in our application in our console-->
+    <property name="hibernate.show_sql">true</property>
+    <!--Defining for Hibernate that what kind of style we need to auto update the database structure
+    Eg: hbm2ddl.auto types: update, create, create-drop, validate-->
+    <property name="hibernate.hbm2ddl.auto">update</property>
+  </session-factory>
+</hibernate-configuration>
