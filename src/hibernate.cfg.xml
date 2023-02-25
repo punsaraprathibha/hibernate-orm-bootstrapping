@@ -7,7 +7,7 @@
     <!--Defining for Hibernate that what's the connection driver class we're using in out project-->
     <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
     <!--Defining for Hibernate that what's the dialect we're using in out project-->
-    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
     <!--Defining for Hibernate that what's the connection URL we're using in out project-->
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/YOUR_DB_NAME</property>
     <!--Defining for Hibernate that what's the username for our database-->
