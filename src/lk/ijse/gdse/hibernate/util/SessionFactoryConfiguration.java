@@ -52,11 +52,11 @@ public class SessionFactoryConfiguration {
 
     /**
      * @return org.hibernate.Session
-     * @throws org.hibernate.HibernateException Purpose of this method is to get a Session from the Session Factory
+     * @throws org.hibernate.HibernateException
+     * Purpose of this method is to get a Session from the Session Factory
      */
     public Session getSession() throws HibernateException {
-        // Opens a new Session through the Session Factory 
-        // & returns the Session created
+        // Opens a new Session through the Session Factory & returns the Session created
         return sessionFactory.openSession();
     }
 }
