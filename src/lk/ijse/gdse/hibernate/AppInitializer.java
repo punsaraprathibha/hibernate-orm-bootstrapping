@@ -22,14 +22,14 @@ public class AppInitializer {
      */
     public static void main(String[] args) throws InterruptedException {
 
-        // (1) This is what we've firstly done & tested before creating the CustomerRepository
-        Customer customer1 = getCustomerEntity();
-
-        Session session = SessionFactoryConfiguration.getInstance().getSession();
-        Transaction transaction = session.beginTransaction();
-        session.save(customer1);
-        transaction.commit();
-        session.close();
+// (1) This is what we've firstly done & tested before creating the CustomerRepository
+//        Customer customer1 = getCustomerEntity();
+//
+//        Session session = SessionFactoryConfiguration.getInstance().getSession();
+//        Transaction transaction = session.beginTransaction();
+//        session.save(customer1);
+//        transaction.commit();
+//        session.close();
 
         // ---------------------------------------------------------------------
         // (2) This is what we've done after creating the CustomerRepository

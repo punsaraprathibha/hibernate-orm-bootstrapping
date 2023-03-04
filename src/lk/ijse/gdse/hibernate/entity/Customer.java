@@ -147,4 +147,17 @@ public class Customer {
         this.phoneNos = phoneNos;
     }
 
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name=" + name +
+                ", address='" + address + '\'' +
+                ", salary=" + salary +
+                ", age=" + age +
+                ", phoneNos=" + phoneNos +
+                ", dob='" + dob + '\'' +
+                ", createdDate=" + createdDate +
+                '}';
+    }
 }

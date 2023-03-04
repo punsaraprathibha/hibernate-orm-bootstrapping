@@ -30,7 +30,8 @@ public class CustomerRepository {
     public Long saveCustomer(Customer customer) {
         Transaction transaction = session.beginTransaction();
         try {
-            Long id = (Long) session.save(customer);
+            Long id = (Long) session.save(customer); // <= Hibernate
+            // session.persist(customer); <= JPA
             transaction.commit();
             session.close();
             return id;
@@ -69,7 +70,9 @@ public class CustomerRepository {
      */
     public Customer getCustomer(long id) {
         try {
-            return session.get(Customer.class, id);
+            Customer customer = session.get(Customer.class, id);
+            session.close(); // We've closed the unclosed sessions in previous week's code
+            return customer;
         } catch (Exception ex) {
             ex.printStackTrace();
             throw ex;
@@ -86,10 +89,12 @@ public class CustomerRepository {
         try {
             session.delete(customer);
             transaction.commit();
+            session.close(); // We've closed the unclosed sessions in previous week's code
             return true;
         } catch (Exception ex) {
             transaction.rollback();
             ex.printStackTrace();
+            session.close(); // We've closed the unclosed sessions in previous week's code
             return false;
         }
     }

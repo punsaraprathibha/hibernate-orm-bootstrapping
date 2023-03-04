@@ -9,11 +9,11 @@
     <!--Defining for Hibernate that what's the dialect we're using in out project-->
     <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
     <!--Defining for Hibernate that what's the connection URL we're using in out project-->
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/YOUR_DB_NAME</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate_orm</property>
     <!--Defining for Hibernate that what's the username for our database-->
-    <property name="hibernate.connection.username">YOUR_DB_USERNAME</property>
+    <property name="hibernate.connection.username">root</property>
     <!--Defining for Hibernate that what's the password for our database-->
-    <property name="hibernate.connection.password">YOUR_DB_PASSWORD</property>
+    <property name="hibernate.connection.password">19980728</property>
     <!--Defining for Hibernate that whether we need to view the SQL(s) which execute
     in our application in our console-->
     <property name="hibernate.show_sql">true</property>
