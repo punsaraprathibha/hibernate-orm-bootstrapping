@@ -1,6 +1,7 @@
 package lk.ijse.gdse.hibernate.repository;
 
 import lk.ijse.gdse.hibernate.entity.Customer;
+import lk.ijse.gdse.hibernate.projection.CustomerDetailDto;
 import lk.ijse.gdse.hibernate.util.SessionFactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -114,6 +115,15 @@ public class CustomerRepository {
     // JPQL
     public List<Customer> getAllJPQLCustomers() {
         String sql = "SELECT C FROM Customer AS C"; // alias
+        Query query = session.createQuery(sql);
+        List list = query.list();
+        session.close();
+        return list;
+    }
+
+    // Here we're going to do a projection (which means getting only a set of selected attributes as the result)
+    public List<CustomerDetailDto> getAllCustomerProjection() {
+        String sql = "SELECT new lk.ijse.gdse.hibernate.projection.CustomerDetailDto(C.name, C.address, C.age) FROM Customer AS C"; // In here the error was not defining the new keyword
         Query query = session.createQuery(sql);
         List list = query.list();
         session.close();

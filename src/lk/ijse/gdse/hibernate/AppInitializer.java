@@ -3,6 +3,7 @@ package lk.ijse.gdse.hibernate;
 import lk.ijse.gdse.hibernate.embedded.NameIdentifier;
 import lk.ijse.gdse.hibernate.embedded.MobileNo;
 import lk.ijse.gdse.hibernate.entity.Customer;
+import lk.ijse.gdse.hibernate.projection.CustomerDetailDto;
 import lk.ijse.gdse.hibernate.repository.CustomerRepository;
 import lk.ijse.gdse.hibernate.util.SessionFactoryConfiguration;
 import org.hibernate.Session;
@@ -22,69 +23,28 @@ public class AppInitializer {
      */
     public static void main(String[] args) throws InterruptedException {
 
-// (1) This is what we've firstly done & tested before creating the CustomerRepository
-//        Customer customer1 = getCustomerEntity();
-//
-//        Session session = SessionFactoryConfiguration.getInstance().getSession();
-//        Transaction transaction = session.beginTransaction();
-//        session.save(customer1);
-//        transaction.commit();
-//        session.close();
-
-        // ---------------------------------------------------------------------
-        // (2) This is what we've done after creating the CustomerRepository
-        // Please run the below operations one by one separately (Not all at once which
-        // may give errors which hibernate can't manage with multiple sessions)
-
         CustomerRepository customerRepository = new CustomerRepository();
         Customer customer = getCustomerEntity();
 
         // 1. Performs Save/Insert through Customer Repository
         customerRepository.saveCustomer(customer);
-//
-//        Thread.sleep(500); // Wait some time before retrieve data after save
-//
-//        // 2. Get Existing Customer data from the database table
-//        customerRepository = new CustomerRepository();
-//        Customer existingCustomer = customerRepository.getCustomer(1L);
-//        System.out.println("Customer Id: " + existingCustomer.getId());
-//
-//        // 3. Sets the modified data to the attributes through the setters
-//        existingCustomer.setAddress("Matara");
-//        existingCustomer.setAge(35);
-//
-//        // 4. Updates the existing customer from DB
-//        customerRepository = new CustomerRepository();
-//        boolean isUpdated = customerRepository.updateCustomer(existingCustomer);
-//        if (isUpdated) {
-//            System.out.println("Customer " + existingCustomer.getId() +
-//                    " Updated Successfully!");
-//        } else {
-//            System.out.println("Customer " + existingCustomer.getId() +
-//                    " Not Updated!");
-//        }
-//
-//        // 5. Deletes the existing Customer from DB
-//        customerRepository = new CustomerRepository();
-//        boolean isDeleted = customerRepository.deleteCustomer(existingCustomer);
-//        if (isDeleted) {
-//            System.out.println("Customer " + existingCustomer.getId() +
-//                    " Deleted Successfully!");
-//        } else {
-//            System.out.println("Customer " + existingCustomer.getId() +
-//                    " Deletion Failed!");
-//        }
 
-//        customerRepository = new CustomerRepository();
-//        List<Customer> customers = customerRepository.getAllCustomers();
-//        for (Customer customer1 : customers) {
-//            System.out.println(customer1);
-//        }
-
+        customerRepository = new CustomerRepository();
+        List<Customer> customers = customerRepository.getAllCustomers();
+        for (Customer customer1 : customers) {
+            System.out.println(customer1);
+        }
 
         customerRepository = new CustomerRepository();
         List<Customer> jpqlCustomers = customerRepository.getAllJPQLCustomers();
         for (Customer customer1 : jpqlCustomers) {
+            System.out.println(customer1);
+        }
+
+        // Now this Projection works. Please refer the CustomerRepository
+        customerRepository = new CustomerRepository();
+        List<CustomerDetailDto> jpqlCustomerProj = customerRepository.getAllCustomerProjection();
+        for (CustomerDetailDto customer1 : jpqlCustomerProj) {
             System.out.println(customer1);
         }
     }
