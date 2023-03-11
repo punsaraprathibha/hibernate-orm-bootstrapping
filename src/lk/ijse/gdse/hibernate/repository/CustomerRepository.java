@@ -4,6 +4,9 @@ import lk.ijse.gdse.hibernate.entity.Customer;
 import lk.ijse.gdse.hibernate.util.SessionFactoryConfiguration;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
+import java.util.List;
 
 /**
  * Defines a Customer Repository to Manage All
@@ -97,5 +100,23 @@ public class CustomerRepository {
             session.close(); // We've closed the unclosed sessions in previous week's code
             return false;
         }
+    }
+
+    // HQL - Hibernate Query Language
+    public List<Customer> getAllCustomers() {
+        String sqlQuery = "FROM Customer";
+        Query query = session.createQuery(sqlQuery);
+        List list = query.list();
+        session.close();
+        return list;
+    }
+
+    // JPQL
+    public List<Customer> getAllJPQLCustomers() {
+        String sql = "SELECT C FROM Customer AS C"; // alias
+        Query query = session.createQuery(sql);
+        List list = query.list();
+        session.close();
+        return list;
     }
 }

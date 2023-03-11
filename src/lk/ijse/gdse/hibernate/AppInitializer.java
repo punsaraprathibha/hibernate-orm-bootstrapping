@@ -41,38 +41,51 @@ public class AppInitializer {
 
         // 1. Performs Save/Insert through Customer Repository
         customerRepository.saveCustomer(customer);
+//
+//        Thread.sleep(500); // Wait some time before retrieve data after save
+//
+//        // 2. Get Existing Customer data from the database table
+//        customerRepository = new CustomerRepository();
+//        Customer existingCustomer = customerRepository.getCustomer(1L);
+//        System.out.println("Customer Id: " + existingCustomer.getId());
+//
+//        // 3. Sets the modified data to the attributes through the setters
+//        existingCustomer.setAddress("Matara");
+//        existingCustomer.setAge(35);
+//
+//        // 4. Updates the existing customer from DB
+//        customerRepository = new CustomerRepository();
+//        boolean isUpdated = customerRepository.updateCustomer(existingCustomer);
+//        if (isUpdated) {
+//            System.out.println("Customer " + existingCustomer.getId() +
+//                    " Updated Successfully!");
+//        } else {
+//            System.out.println("Customer " + existingCustomer.getId() +
+//                    " Not Updated!");
+//        }
+//
+//        // 5. Deletes the existing Customer from DB
+//        customerRepository = new CustomerRepository();
+//        boolean isDeleted = customerRepository.deleteCustomer(existingCustomer);
+//        if (isDeleted) {
+//            System.out.println("Customer " + existingCustomer.getId() +
+//                    " Deleted Successfully!");
+//        } else {
+//            System.out.println("Customer " + existingCustomer.getId() +
+//                    " Deletion Failed!");
+//        }
 
-        Thread.sleep(500); // Wait some time before retrieve data after save
+//        customerRepository = new CustomerRepository();
+//        List<Customer> customers = customerRepository.getAllCustomers();
+//        for (Customer customer1 : customers) {
+//            System.out.println(customer1);
+//        }
 
-        // 2. Get Existing Customer data from the database table
+
         customerRepository = new CustomerRepository();
-        Customer existingCustomer = customerRepository.getCustomer(1L);
-        System.out.println("Customer Id: " + existingCustomer.getId());
-
-        // 3. Sets the modified data to the attributes through the setters
-        existingCustomer.setAddress("Matara");
-        existingCustomer.setAge(35);
-
-        // 4. Updates the existing customer from DB
-        customerRepository = new CustomerRepository();
-        boolean isUpdated = customerRepository.updateCustomer(existingCustomer);
-        if (isUpdated) {
-            System.out.println("Customer " + existingCustomer.getId() +
-                    " Updated Successfully!");
-        } else {
-            System.out.println("Customer " + existingCustomer.getId() +
-                    " Not Updated!");
-        }
-
-        // 5. Deletes the existing Customer from DB
-        customerRepository = new CustomerRepository();
-        boolean isDeleted = customerRepository.deleteCustomer(existingCustomer);
-        if (isDeleted) {
-            System.out.println("Customer " + existingCustomer.getId() +
-                    " Deleted Successfully!");
-        } else {
-            System.out.println("Customer " + existingCustomer.getId() +
-                    " Deletion Failed!");
+        List<Customer> jpqlCustomers = customerRepository.getAllJPQLCustomers();
+        for (Customer customer1 : jpqlCustomers) {
+            System.out.println(customer1);
         }
     }
 
@@ -88,12 +101,12 @@ public class AppInitializer {
         nameIdentifier.setLastName("SurName");
 
         // Sets the NameIdentifier object data as Name in Customer Entity
-        customer.setName(nameIdentifier);
+//        customer.setName(nameIdentifier);
 
         // Sets the customer address
         customer.setAddress("Galle");
         // Sets the customer salary
-        customer.setSalary(30000.00);
+//        customer.setSalary(30000.00);
         // Sets the customer age
         customer.setAge(22);
 
@@ -103,7 +116,7 @@ public class AppInitializer {
         phoneNos.add(new MobileNo("HOME", "0918475834758"));
         // Sets the defined List of MobileNo - Embeddable objects
         // as PhoneNos in Customer Entity
-        customer.setPhoneNos(phoneNos);
+//        customer.setPhoneNos(phoneNos);
 
         return customer;
     }

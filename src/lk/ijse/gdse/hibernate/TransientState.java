@@ -31,7 +31,7 @@ public class TransientState {
 
         transaction.commit();
 
-        customer.setSalary(30000.00);
+//        customer.setSalary(30000.00);
 
         session.close();
     }
