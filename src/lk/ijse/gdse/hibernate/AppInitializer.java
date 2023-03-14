@@ -5,9 +5,6 @@ import lk.ijse.gdse.hibernate.embedded.MobileNo;
 import lk.ijse.gdse.hibernate.entity.Customer;
 import lk.ijse.gdse.hibernate.projection.CustomerDetailDto;
 import lk.ijse.gdse.hibernate.repository.CustomerRepository;
-import lk.ijse.gdse.hibernate.util.SessionFactoryConfiguration;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import java.util.ArrayList;
 import java.util.List;

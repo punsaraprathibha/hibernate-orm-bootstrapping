@@ -1,7 +1,5 @@
 package lk.ijse.gdse.hibernate.entity;
 
-import com.sun.tools.corba.se.idl.constExpr.Or;
-
 import javax.persistence.*;
 
 @Entity
@@ -29,4 +27,65 @@ public class OrderDetail {
     referencedColumnName = "item_code",
     insertable = false, updatable = false)
     private Item item;
+
+    public OrderDetail() {}
+
+    public OrderDetail(OrderDetailPK orderDetailPK, double price, int qty, Order order, Item item) {
+        this.orderDetailPK = orderDetailPK;
+        this.price = price;
+        this.qty = qty;
+        this.order = order;
+        this.item = item;
+    }
+
+    public OrderDetailPK getOrderDetailPK() {
+        return orderDetailPK;
+    }
+
+    public void setOrderDetailPK(OrderDetailPK orderDetailPK) {
+        this.orderDetailPK = orderDetailPK;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderDetail{" +
+                "orderDetailPK=" + orderDetailPK +
+                ", price=" + price +
+                ", qty=" + qty +
+                ", order=" + order +
+                ", item=" + item +
+                '}';
+    }
 }

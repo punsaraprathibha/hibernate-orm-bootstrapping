@@ -12,4 +12,28 @@ public class OrderDetailPK implements Serializable {
 
     @Column(name = "item_id")
     private long itemId;
+
+    public long getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(long orderId) {
+        this.orderId = orderId;
+    }
+
+    public long getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(long itemId) {
+        this.itemId = itemId;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderDetailPK{" +
+                "orderId=" + orderId +
+                ", itemId=" + itemId +
+                '}';
+    }
 }
